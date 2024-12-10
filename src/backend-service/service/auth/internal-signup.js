@@ -2,8 +2,6 @@ const Sequelize = require('sequelize')
 
 const sequelize = require('../../utils/database');
 const Users     = require('../../models/user');
-const { errorHandler } = require("../../middleware/response-handler");
-
 
 const checkEmailExists = async (value) => {
         return  Users.findOne({
