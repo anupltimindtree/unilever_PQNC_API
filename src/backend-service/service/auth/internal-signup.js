@@ -8,7 +8,7 @@ const checkEmailExists = async (value) => {
             where: {
                 email : value.email
             },
-            attributes: ['id','password','mobile','name']
+            attributes: ['id','email','mobile','name']
         }).then(result => {
             return result; 
         }).catch((error) => {

@@ -23,7 +23,7 @@ const login = async (req, res, next) => {
             }
         }
 
-        const { userData, token } = await service.login(value);
+        const { userData, token } = await service.login(userDetails);
         const data = {
             userDetails,
             accessToken: token,

@@ -1,8 +1,9 @@
 const utils = require('../../utils/authJwt');
 const login = async (value) => {
-
     const userData = {
-        userName: value.username
+        userId:value.dataValues.id,
+        userName: value.dataValues.name,
+        userEmail: value.dataValues.email
     }
 
     const token  = utils.getAccessToken(userData)

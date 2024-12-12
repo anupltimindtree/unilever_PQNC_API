@@ -36,12 +36,14 @@ const signUp = async (req, res, next) => {
             name:value.name
         };
         userDetails = await service.createUsers(bodydata);
-
-        const userData = {
-            userName: value.email
+        if(userDetails){
+            const userData = {
+                userId:userDetails.dataValues.id,
+                userName: userDetails.dataValues.email,
+                userEmail: userDetails.dataValues.name
+            }
+            token  = utils.getAccessToken(userData);
         }
-        token           = utils.getAccessToken(userData);
-
         const data = {
             userDetails,
             accessToken: token

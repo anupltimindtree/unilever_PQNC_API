@@ -15,6 +15,10 @@ const signUpSchema = Joi.object().keys({
   password: Joi.string().required().trim(),
 });
 
+const landingPageSchema = Joi.object().keys({
+  userId: Joi.string().required().trim()
+});
+
 
 const defaults = {
     'abortEarly': false, // include all errors
@@ -27,6 +31,7 @@ const message = (error) => { return `${error.details.map(x => x.message).join(',
 module.exports = {
     loginSchema,
     signUpSchema,
+    landingPageSchema,
     defaults,
     message
 }
