@@ -30,7 +30,6 @@ const Users = sequelize.dbSequelize.define('user__sys', {
     user_permission: { type: Sequelize.STRING(11) },
     add_permission : { type: Sequelize.STRING(11) },
     vendor__code:{ type: Sequelize.STRING(255) },
-    user__category:{ type: Sequelize.STRING(255),allowNull:false },
     status__v: { type: Sequelize.ENUM,
         values: [
             'active__v',
