@@ -7,12 +7,29 @@ const loginSchema = Joi.object().keys({
   password: Joi.string().required().trim(),
 });
 
-const signUpSchema = Joi.object().keys({
-  email: Joi.string().required().email().trim(),
+const signUpSchemaForInternalUser = Joi.object().keys({
+  email: Joi.string().required().trim(),
+  first_name: Joi.string().required().trim(),
+  last_name: Joi.string().required().trim(),
+  // country: Joi.string(),
+  // cluster: Joi.string().trim(),
+  // location: Joi.string().trim(),
+  user_category: Joi.string().required().trim(),
+  user_type: Joi.string().required().trim(),
   role: Joi.string().required().trim(),
-  name: Joi.string().required().trim(),
-  mobile: Joi.string().required().trim(),
-  password: Joi.string().required().trim(),
+  security_profile_role:Joi.string().required().trim()
+});
+const signUpSchemaForExternalUser = Joi.object().keys({
+  email: Joi.string().required().trim(),
+  // country: Joi.string().trim(),
+  // cluster: Joi.string(),
+  // location: Joi.string().trim(),
+  user_category: Joi.string().required().trim(),
+  user_type: Joi.string().required().trim(),
+  vendor_code: Joi.string().required().trim(),
+  role: Joi.string().required().trim(),
+  security_profile_role:Joi.string().required().trim(),
+  password:Joi.string().required().trim()
 });
 
 const landingPageSchema = Joi.object().keys({
@@ -30,7 +47,8 @@ const message = (error) => { return `${error.details.map(x => x.message).join(',
 
 module.exports = {
     loginSchema,
-    signUpSchema,
+    signUpSchemaForInternalUser,
+    signUpSchemaForExternalUser,
     landingPageSchema,
     defaults,
     message

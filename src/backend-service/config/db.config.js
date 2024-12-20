@@ -1,7 +1,7 @@
 dbCofig = {
     HOST: "localhost",
     USER: "root",
-    PASSWORD: "bekaert",
+    PASSWORD: "root",
     DB: "unilever_pqnc",
     dialect: "mysql", 
     pool: {

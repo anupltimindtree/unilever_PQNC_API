@@ -2,8 +2,7 @@ const Sequelize = require('sequelize')
 
 const sequelize = require('../utils/database') 
 
-const Users = sequelize.dbSequelize.define('user', { 
-
+const Users = sequelize.dbSequelize.define('user__sys', { 
 	id:{ 
 
 		type:Sequelize.INTEGER, 
@@ -11,37 +10,46 @@ const Users = sequelize.dbSequelize.define('user', {
 		allowNull:false, 
 		primaryKey:true
 	}, 
-	email: { type: Sequelize.STRING, allowNull:false }, 
-    role: { type: Sequelize.STRING, allowNull:false }, 
-	name: { type: Sequelize.STRING, allowNull:false }, 
-    language: { type: Sequelize.STRING }, 
-    state: { type: Sequelize.STRING}, 
-    country: { type: Sequelize.STRING }, 
-    mobile: { type: Sequelize.STRING, allowNull:false }, 
-    password: { type: Sequelize.STRING, allowNull:false }, 
-    is_verified: { type: Sequelize.ENUM,
+	email__sys: { type: Sequelize.STRING(120), allowNull:false }, 
+    cluster__c: { type: Sequelize.STRING(128)}, 
+	country1__c: { type: Sequelize.STRING(128) }, 
+    country__c: { type: Sequelize.STRING(128) }, 
+    factory__c: { type: Sequelize.STRING(128)}, 
+    username__sys: { type: Sequelize.STRING(255) }, 
+    first_name__sys: { type: Sequelize.STRING(100) }, 
+    last_login__sys: { type: Sequelize.DATE }, 
+    password: { type: Sequelize.STRING(255)}, 
+    last_name__sys: { type: Sequelize.STRING(100)}, 
+    modified_by__v: { type: Sequelize.STRING(128)}, 
+    modified_date__v: { type: Sequelize.DATE }, 
+    name__v: { type: Sequelize.STRING(255) }, 
+    reject_comment : { type: Sequelize.STRING(255) },
+    cm_site: { type: Sequelize.STRING(255) }, 
+	security_profile__sys: { type: Sequelize.STRING(128), allowNull:false }, 
+    role_id:{ type: Sequelize.INTEGER(1) },
+    user_permission: { type: Sequelize.STRING(11) },
+    add_permission : { type: Sequelize.STRING(11) },
+    vendor__code:{ type: Sequelize.STRING(255) },
+    user__category:{ type: Sequelize.STRING(255),allowNull:false },
+    status__v: { type: Sequelize.ENUM,
         values: [
-            'true',
-            'false',
+            'active__v',
+            'inactive__v',
+            'unapproved__v',
+            'reject__v'
         ],
-        defaultValue: 'true'
-    }, 
-    granted_date: { type: Sequelize.DATE, allowNull:true }, 
-    status: { type: Sequelize.ENUM,  
-                values: [
-                    'true',
-                    'false',
-                ],
-                defaultValue: 'true'
-    },
-    is_allowed: { type: Sequelize.ENUM,  
+        defaultValue: 'unapproved__v'
+     }, 
+    user_type: { type: Sequelize.ENUM,  
         values: [
-        'true',
-        'false',
-    ],
-    defaultValue: 'true' }, 
-	createdAt: { type: Sequelize.DATE, 
-			defaultValue: Sequelize.NOW }, 
+        'mobile',
+        'qualityone',
+    ], 
+     defaultValue: 'mobile'
+   }, 
+    created_by__v: { type: Sequelize.STRING(128)},
+	created_date__v: { type: Sequelize.DATE,defaultValue: Sequelize.NOW}, 
+
 }) 
 
 module.exports = Users
