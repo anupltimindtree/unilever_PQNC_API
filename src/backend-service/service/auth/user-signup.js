@@ -44,7 +44,6 @@ const createUsers = async (value) => {
             email__sys:value.email.trim(),
             username__sys:value.email.trim(),
             vendor_code:value.vendor_code?value.vendor_code.trim() : "",    
-            user__category:value.user_category.trim(),
             cm_site:value.cm_site?value.cm_site.trim() :""
     }).then(result => {
         resultData.data=result;
